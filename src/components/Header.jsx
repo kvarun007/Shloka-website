@@ -10,11 +10,11 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white p-4">
+    <header className="fixed top-0 left-0 w-full bg-white text-gray-900 p-4 z-50 shadow-md border-b border-gray-200">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold">SHLOKA</div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
+          <button onClick={toggleMenu} className="text-gray-900 focus:outline-none">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -31,14 +31,14 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <nav className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto bg-gray-800 md:bg-transparent p-4 md:p-0 z-10`}>
+        <nav className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto bg-white md:bg-white p-4 md:p-0 z-10`}>
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-            <li><Link to="/" className="hover:text-gray-300">Home</Link></li>
-            <li><Link to="/about" className="hover:text-gray-300">About Us</Link></li>
-            <li><Link to="/services" className="hover:text-gray-300">Services</Link></li>
-            <li><Link to="/portfolio" className="hover:text-gray-300">Portfolio</Link></li>
-            <li><Link to="/blog" className="hover:text-gray-300">Blog</Link></li>
-            <li><Link to="/contact" className="hover:text-gray-300">Contact Us</Link></li>
+            <li><Link to="/" className="hover:text-gray-300 text-gray-900">Home</Link></li>
+            <li><Link to="/about" className="hover:text-gray-300 text-gray-900">About Us</Link></li>
+            <li><Link to="/services" className="hover:text-gray-300 text-gray-900">Services</Link></li>
+            <li><Link to="/portfolio" className="hover:text-gray-300 text-gray-900">Portfolio</Link></li>
+            <li><Link to="/blog" className="hover:text-gray-300 text-gray-900">Blog</Link></li>
+            <li><Link to="/contact" className="hover:text-gray-300 text-gray-900">Contact Us</Link></li>
           </ul>
         </nav>
         <div className={`md:flex ${isMenuOpen ? 'flex flex-col space-y-2' : 'hidden'} md:space-x-4`}>
