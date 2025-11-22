@@ -12,7 +12,7 @@ import GetQuote from './components/GetQuote';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Shloka-website/">
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
