@@ -31,17 +31,22 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <nav className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto bg-white md:bg-white p-4 md:p-0 z-10`}>
-          <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-            <li><Link to="/" className="hover:text-gray-300 text-gray-900">Home</Link></li>
-            <li><Link to="/about" className="hover:text-gray-300 text-gray-900">About Us</Link></li>
-            <li><Link to="/services" className="hover:text-gray-300 text-gray-900">Services</Link></li>
-            <li><Link to="/portfolio" className="hover:text-gray-300 text-gray-900">Portfolio</Link></li>
-            <li><Link to="/blog" className="hover:text-gray-300 text-gray-900">Blog</Link></li>
-            <li><Link to="/contact" className="hover:text-gray-300 text-gray-900">Contact Us</Link></li>
+        {/* Navigation links - responsive */}
+        <nav className={`md:flex absolute md:relative top-16 md:top-auto w-full md:w-auto bg-white md:bg-white p-4 md:p-0 z-10
+          ${isMenuOpen ? 'block right-0' : 'hidden left-0'}
+        `}>
+          <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-end md:items-center">
+            <li><Link to="/" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>Home</Link></li>
+            <li><Link to="/about" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>About Us</Link></li>
+            <li><Link to="/services" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>Services</Link></li>
+            <li><Link to="/portfolio" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>Portfolio</Link></li>
+            <li><Link to="/blog" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>Blog</Link></li>
+            <li><Link to="/contact" className="hover:text-gray-300 text-gray-900" onClick={toggleMenu}>Contact Us</Link></li>
           </ul>
         </nav>
-        <div className={`md:flex ${isMenuOpen ? 'flex flex-col space-y-2' : 'hidden'} md:space-x-4`}>
+
+        {/* Action buttons (Contact, WhatsApp) - responsive */}
+        <div className="hidden md:flex md:space-x-4">
           <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Contact</Link>
           <a href="https://wa.me/911234567890" target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">WhatsApp</a>
         </div>
