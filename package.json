@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/kvarun007/Shloka-website",
+  "homepage": "https://kvarun007.github.io/Shloka-website/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
