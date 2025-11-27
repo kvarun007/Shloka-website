@@ -30,7 +30,7 @@ const Blog = () => {
 	];
 
 	return (
-		<div className=" mx-auto py-12">
+		<div className=" mx-auto py-12 bg-gray-100">
 			{/* Hero Section */}
 			<section
 				className="relative bg-gray-900 text-white h-52 flex items-center justify-center w-full mb-6"

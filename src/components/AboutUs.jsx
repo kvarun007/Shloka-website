@@ -4,7 +4,7 @@ import Aboutus_image from "../assets/images/Aboutus_image.jpg";
 
 const AboutUs = () => {
 	return (
-		<div className="pt-16">
+		<div className="pt-16 ">
 			{/* About Us & Our Mission Combined Section */}
 			<section
 				className="relative py-16 px-4 text-white h-1/4"
@@ -53,7 +53,7 @@ const AboutUs = () => {
 					</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 						<div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-							<h3 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">
+							<h3 className="text-2xl sm:text-2xl font-semibold mb-4 text-gray-800">
 								Precision at Scale
 							</h3>
 							<p className="text-gray-700">
@@ -62,7 +62,7 @@ const AboutUs = () => {
 							</p>
 						</div>
 						<div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-							<h3 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">
+							<h3 className="text-2xl sm:text-2xl font-semibold mb-4 text-gray-800">
 								Timely Execution
 							</h3>
 							<p className="text-gray-700">
@@ -70,7 +70,7 @@ const AboutUs = () => {
 							</p>
 						</div>
 						<div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-							<h3 className="text-2xl font-semibold mb-4 text-gray-800">
+							<h3 className="text-2xl sm:text-2xl font-semibold mb-4 text-gray-800">
 								Safe & Compliant Operations
 							</h3>
 							<p className="text-gray-700">
@@ -79,7 +79,7 @@ const AboutUs = () => {
 							</p>
 						</div>
 						<div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-							<h3 className="text-2xl font-semibold mb-4 text-gray-800">
+							<h3 className="text-2xl sm:text-2xl font-semibold mb-4 text-gray-800">
 								Innovation-First Thinking
 							</h3>
 							<p className="text-gray-700">
@@ -88,7 +88,7 @@ const AboutUs = () => {
 							</p>
 						</div>
 						<div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-							<h3 className="text-2xl font-semibold mb-4 text-gray-800">
+							<h3 className="text-2xl sm:text-2xl font-semibold mb-4 text-gray-800">
 								Client-Centric Delivery
 							</h3>
 							<p className="text-gray-700">

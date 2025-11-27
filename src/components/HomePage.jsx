@@ -148,7 +148,7 @@ const HomePage = () => {
 					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-800">
 						Ready to Transform Your Operations?
 					</h2>
-					<p className="text-md sm:text-lg md:text-xl mb-10">
+					<p className="text-md sm:text-lg md:text-xl mb-10 text-gray-700">
 						Contact us today to discuss your project requirements.
 					</p>
 					<Link

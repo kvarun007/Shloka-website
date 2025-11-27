@@ -2,7 +2,7 @@ import React from "react";
 import ContactUs_image from "../assets/images/city_image.jpg";
 const ContactUs = () => {
 	return (
-		<div className=" mx-auto py-12">
+		<div className=" mx-auto py-12 bg-gray-100">
 			{/* Hero Section */}
 			<section
 				className="relative bg-gray-900 text-white h-52 flex items-center justify-center w-full mb-6"
@@ -27,18 +27,25 @@ const ContactUs = () => {
 					</h2>
 					<div className="space-y-4 text-gray-700 text-base sm:text-lg">
 						<p>
-							<span className="font-semibold">Address:</span> 123, Sample
-							Industrial Area, Hyderabad, Telangana
+							<span className="font-semibold">Address:</span> 80-16-25, Srinivas
+							Nagar, AVA Road, Rajahmundry, Andhra Pradesh
 						</p>
 						<p>
-							<span className="font-semibold">Phone:</span> +91 1234567890
+							<span className="font-semibold">Phone:</span> +91 9281094963, +91
+							9281094964
 						</p>
 						<p>
-							<span className="font-semibold">Email:</span> info@shlokadrone.com
+							<span className="font-semibold">Email:</span>
+							<a href="shlokadroneaviationservicesllp@gmail.com">
+								{"  shlokadroneaviationservicesllp@gmail.com"}
+							</a>
 						</p>
 						<p>
-							<span className="font-semibold">LinkedIn / Instagram:</span>{" "}
-							Placeholder
+							<span className="font-semibold">Instagram:</span>
+
+							<a href="https://www.instagram.com/shlokadroneaviationservices/">
+								{"  Instagaram"}
+							</a>
 						</p>
 					</div>
 				</div>
