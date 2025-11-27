@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+// import logo from "../assets/images/react.svg"; //
+import logo from "../assets/images/logo.jpg";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,8 +13,22 @@ const Header = () => {
 
 	return (
 		<header className="fixed top-0 left-0 w-full bg-white text-gray-900 p-4 z-50 shadow-md border-b border-gray-200">
-			<div className="container mx-auto flex justify-between items-center">
-				<div className="text-2xl font-bold">SHLOKA</div>
+			<div className=" mx-auto flex justify-between items-center">
+				<div className="flex items-center">
+					<Link to="/">
+						<img src={logo} alt="Logo" className="h-12 w-12 ml-4 mr-4" />
+					</Link>
+					<Link to="/">
+						<div className="flex flex-col items-start">
+							<div className="text-4xl font-bold text-blue-600 hover:text-blue-700">
+								SHLOKA
+							</div>
+							<div className="text-sm font-normal text-gray-600 ">
+								Drone Aviation Services
+							</div>
+						</div>
+					</Link>
+				</div>
 				<div className="md:hidden">
 					<button
 						onClick={toggleMenu}
@@ -36,7 +52,7 @@ const Header = () => {
 				</div>
 				{/* Navigation links - responsive */}
 				<nav
-					className={`md:flex absolute md:relative top-16 md:top-auto w-full md:w-auto bg-white md:bg-white p-4 md:p-0 z-10
+					className={`md:flex absolute md:relative top-20 md:top-auto w-full md:w-auto bg-white md:bg-white p-4 md:p-0 z-10 
           ${isMenuOpen ? "block right-0" : "hidden left-0"}
         `}
 				>
