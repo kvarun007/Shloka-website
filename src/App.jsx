@@ -17,7 +17,7 @@ function App() {
 				<Header />
 				<main className="flex-grow">
 					<Routes>
-						<Route path="//" element={<HomePage />} />
+						<Route path="/Shloka-website/" element={<HomePage />} />
 						<Route path="/about" element={<AboutUs />} />
 						<Route path="/services" element={<Services />} />
 						<Route path="/portfolio" element={<Portfolio />} />

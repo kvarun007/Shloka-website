@@ -15,10 +15,10 @@ const Header = () => {
 		<header className="fixed top-0 left-0 w-full bg-white text-gray-900 p-4 z-50 shadow-md border-b border-gray-200">
 			<div className=" mx-auto flex justify-between items-center">
 				<div className="flex items-center">
-					<Link to="/">
+					<Link to="/Shloka-website">
 						<img src={logo} alt="Logo" className="h-12 w-12 ml-4 mr-4" />
 					</Link>
-					<Link to="/">
+					<Link to="/Shloka-website">
 						<div className="flex flex-col items-start">
 							<div className="text-4xl font-bold text-blue-600 hover:text-blue-700">
 								SHLOKA
@@ -59,7 +59,7 @@ const Header = () => {
 					<ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-end md:items-center">
 						<li>
 							<Link
-								to="/"
+								to="/Shloka-website"
 								className="hover:text-gray-300 text-gray-900"
 								onClick={toggleMenu}
 							>
