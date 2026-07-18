@@ -12,12 +12,12 @@ import GetQuote from "./components/GetQuote";
 
 function App() {
 	return (
-		<Router>
+		<Router basename="/">
 			<div className="flex flex-col min-h-screen">
 				<Header />
-				<main className="flex-grow">
+				<main className="grow">
 					<Routes>
-						<Route path="/Shloka-website/" element={<HomePage />} />
+						<Route path="/" element={<HomePage />} />
 						<Route path="/about" element={<AboutUs />} />
 						<Route path="/services" element={<Services />} />
 						<Route path="/portfolio" element={<Portfolio />} />

@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import getQuote_image from "../assets/images/city_image.jpg";
+import { sendFormEmailWithAttachment } from "../utils/sendFormEmail";
 
 const GetQuote = () => {
+	const [status, setStatus] = useState({ type: "", message: "" });
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		const form = event.currentTarget;
+		setIsSubmitting(true);
+		setStatus({ type: "", message: "" });
+
+		const formData = new FormData(form);
+		const file = formData.get("fileUpload");
+		const countryCodeValue = formData.get("phoneCountryCode");
+		const countryCode = countryCodeValue.startsWith("+")
+			? countryCodeValue
+			: `+${countryCodeValue}`;
+		const phoneNumber = formData.get("phoneNumber");
+
+		try {
+			form.elements.form_type.value = "Quote Form";
+			form.elements.to_email.value = "shlokadroneaviationservicesllp@gmail.com";
+			form.elements.phone.value = `${countryCode} ${phoneNumber}`;
+			form.elements.phone_country_code.value = countryCode;
+			form.elements.phone_number.value = phoneNumber;
+			form.elements.file_name.value = file?.name || "No file uploaded";
+
+			await sendFormEmailWithAttachment(form);
+
+			form.reset();
+			setStatus({
+				type: "success",
+				message: "Thank you! Your quote request has been sent successfully.",
+			});
+		} catch {
+			setStatus({
+				type: "error",
+				message:
+					"Sorry, your quote request could not be sent right now. Please try again later.",
+			});
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
+
 	return (
 		<div className=" mx-auto py-12 bg-gray-100">
 			{/* Hero Section */}
@@ -26,7 +70,13 @@ const GetQuote = () => {
 				<h2 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 text-center">
 					Tell Us About Your Project
 				</h2>
-				<form className="space-y-6">
+				<form className="space-y-6" onSubmit={handleSubmit}>
+					<input type="hidden" name="form_type" />
+					<input type="hidden" name="to_email" />
+					<input type="hidden" name="phone" />
+					<input type="hidden" name="phone_country_code" />
+					<input type="hidden" name="phone_number" />
+					<input type="hidden" name="file_name" />
 					<div>
 						<label
 							htmlFor="name"
@@ -38,6 +88,12 @@ const GetQuote = () => {
 							type="text"
 							id="name"
 							name="name"
+							required
+							minLength="2"
+							maxLength="60"
+							pattern="[A-Za-z\s.]+"
+							title="Please enter a valid name using letters, spaces, and dots only."
+							autoComplete="name"
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 							placeholder="Your Name"
 						/>
@@ -53,6 +109,10 @@ const GetQuote = () => {
 							type="text"
 							id="company"
 							name="company"
+							maxLength="100"
+							pattern="[A-Za-z0-9\s.,&()'-]+"
+							title="Please enter a valid company name."
+							autoComplete="organization"
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 							placeholder="Your Company Name (Optional)"
 						/>
@@ -68,24 +128,50 @@ const GetQuote = () => {
 							type="email"
 							id="email"
 							name="email"
+							required
+							maxLength="100"
+							autoComplete="email"
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 							placeholder="you@example.com"
 						/>
 					</div>
 					<div>
 						<label
-							htmlFor="phone"
+							htmlFor="phoneCountryCode"
 							className="block text-base sm:text-lg font-medium text-gray-700"
 						>
 							Phone
 						</label>
-						<input
-							type="tel"
-							id="phone"
-							name="phone"
-							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
-							placeholder="+91 XXXXXXXXXX"
-						/>
+						<div className="mt-1 grid grid-cols-[110px_1fr] gap-3">
+							<input
+								type="tel"
+								id="phoneCountryCode"
+								name="phoneCountryCode"
+								required
+								minLength="1"
+								maxLength="4"
+								pattern="\+?[0-9]{1,3}"
+								title="Please enter a country code, for example 91 or +91."
+								autoComplete="tel-country-code"
+								inputMode="tel"
+								className="block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
+								placeholder="+91"
+							/>
+							<input
+								type="tel"
+								id="phoneNumber"
+								name="phoneNumber"
+								required
+								minLength="10"
+								maxLength="10"
+								pattern="[0-9]{10}"
+								title="Please enter a 10 digit phone number."
+								autoComplete="tel-national"
+								inputMode="numeric"
+								className="block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
+								placeholder="9876543210"
+							/>
+						</div>
 					</div>
 					<div>
 						<label
@@ -98,6 +184,12 @@ const GetQuote = () => {
 							type="text"
 							id="location"
 							name="location"
+							required
+							minLength="2"
+							maxLength="100"
+							pattern="[A-Za-z0-9\s.,'-]+"
+							title="Please enter a valid project location."
+							autoComplete="address-level2"
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 							placeholder="Project Location (City, State)"
 						/>
@@ -112,6 +204,7 @@ const GetQuote = () => {
 						<select
 							id="service"
 							name="service"
+							required
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 						>
 							<option value="">Select a Service</option>
@@ -134,6 +227,9 @@ const GetQuote = () => {
 							id="requirements"
 							name="requirements"
 							rows="5"
+							required
+							minLength="10"
+							maxLength="1200"
 							className="mt-1 block w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg"
 							placeholder="Describe your project requirements in detail..."
 						></textarea>
@@ -152,11 +248,23 @@ const GetQuote = () => {
 							className="mt-1 block w-full text-base sm:text-lg text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
 						/>
 					</div>
+					{status.message && (
+						<p
+							className={`rounded-md px-4 py-3 text-sm sm:text-base ${
+								status.type === "success"
+									? "bg-green-50 text-green-700"
+									: "bg-red-50 text-red-700"
+							}`}
+						>
+							{status.message}
+						</p>
+					)}
 					<button
 						type="submit"
+						disabled={isSubmitting}
 						className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-base sm:text-lg font-semibold transition-colors duration-300"
 					>
-						Request Quote
+						{isSubmitting ? "Sending..." : "Request Quote"}
 					</button>
 				</form>
 			</section>
